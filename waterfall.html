@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>waterfall</title>
+  <style>
+    .content {
+      position: relative;
+    }
+    .item {
+      width: 200px;
+      margin: 10px;
+      position: absolute;
+      transition: all 1s;//以渐变的方式移动
+    }
+    .height1 {
+      height: 200px;
+      background-color: #f4b300
+    }
+    .height2 {
+      height: 300px;
+      background-color: #691BB8;
+    }
+    .height3 {
+      height: 400px;
+      background-color: #006ac1;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="item height1">item1</div>
+    <div class="item height3">item2</div>
+    <div class="item height2">item3</div>
+    <div class="item height1">item4</div>
+    <div class="item height1">item5</div>
+    <div class="item height3">item6</div>
+    <div class="item height3">item7</div>
+    <div class="item height2">item8</div>
+    <div class="item height1">item9</div>
+    <div class="item height3">item10</div>
+    <div class="item height3">item11</div>
+    <div class="item height3">item12</div>
+    <div class="item height1">item13</div>
+  </div>
+  <script src="jquery-3.2.0.min.js"></script>
+  <script>
+    //1、得到元素的宽度
+    var nodeWidth=$(".item").width();
+    //2、排放一行元素的个数
+    var columnLen=parseInt($(".content").width()/nodeWidth);
+    //3、放置一行元素高度的数组，初始化，高度全为0
+    var itemArr=[];
+    for(var i=0;i<columnLen;i++){
+      itemArr[i]=0;
+    }
+
+    $(".item").each(function(){
+    //获取高度最小元素及其下标
+      var minValue=Math.min.apply(null,itemArr);
+      var minIndex=itemArr.indexOf(minValue);
+    //设置元素的top、left值
+      $(this).css({
+        top: itemArr[minIndex],
+        left: $(this).outerWidth(true)*minIndex
+      });
+      itemArr[minIndex]+=$(this).outerHeight(true);
+    })
+   /*提醒：
+   itemArr[minIndex]不是某一个最小高度值，而是一列元素的高度值之和
+   放置某个元素后，对于下个元素，重新获取 itemArr[minIndex]     
+   */
+   
+   
+   
+   
+  
+/********当窗口尺寸变化时，重新布局***************/  
+/********当窗口尺寸变化时，重新布局***************/ 
+/********当窗口尺寸变化时，重新布局***************/   
+   /* waterFall();
+    $(window).resize(function(){
+       waterFall();   
+    });
+    function waterFall(){
+      var nodeWidth=$(".item").width();
+      var columnLen=parseInt($(".content").width()/nodeWidth);
+      var itemArr=[];
+      for(var i=0;i<columnLen;i++){
+        itemArr[i]=0;
+      }
+
+      $(".item").each(function(){   
+        var minValue=Math.min.apply(null,itemArr);
+        var minIndex=itemArr.indexOf(minValue);  
+        $(this).css({
+          top: itemArr[minIndex],
+          left: $(this).outerWidth(true)*minIndex
+        });
+        itemArr[minIndex]+=$(this).outerHeight(true);
+      })
+    
+    }*/
+    
+    
+/**********************代码精简*****************************/
+/**********************代码精简*****************************/
+/**********************代码精简*****************************/
+   /* var imgWaterFall=(function(){
+      function init(){
+        waterFall();
+        $(window).resize(function(){
+          waterFall();   
+        });
+      }    
+      return {
+        init:init
+      }
+    })();
+    imgWaterFall.init();
+    
+    
+    function waterFall(){
+      var nodeWidth=$(".item").width();
+      var columnLen=parseInt($(".content").width()/nodeWidth);
+      var itemArr=[];
+      for(var i=0;i<columnLen;i++){
+        itemArr[i]=0;
+      }
+
+      $(".item").each(function(){   
+        var minValue=Math.min.apply(null,itemArr);
+        var minIndex=itemArr.indexOf(minValue);  
+        $(this).css({
+          top: itemArr[minIndex],
+          left: $(this).outerWidth(true)*minIndex
+        });
+        itemArr[minIndex]+=$(this).outerHeight(true);
+      })
+    
+    }*/
+  </script>
+</body>
+</html>
+
+
+ 
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
